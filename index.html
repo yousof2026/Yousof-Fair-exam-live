@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FairExam — AI-Powered Exam Proctoring</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAVBAR ════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <span class="logo-icon">🎓</span>
+      Fair<span class="accent">Exam</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#howitworks">How It Works</a></li>
+      <li><a href="#detection">Detection</a></li>
+      <li><a href="#tech">Tech Stack</a></li>
+    </ul>
+    <a href="#download" class="nav-cta">Download Free</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO ══════════════════════════════════════ -->
+<section id="hero">
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="hero-content">
+    <div class="hero-badge reveal-up">
+      <span class="badge-dot"></span>
+      AI-Powered · Real-Time · Windows Desktop
+    </div>
+
+    <a href="https://github.com/yousof158" target="_blank" rel="noopener" class="developer-badge reveal-up">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      Built by <strong>Yousof Ahmad</strong>
+    </a>
+
+    <h1 class="hero-title reveal-up delay-1">
+      Fair<span class="accent">Exam</span>
+    </h1>
+
+    <p class="hero-subtitle reveal-up delay-2">
+      The most advanced AI proctoring system for Windows.<br />
+      Stop cheating before it starts — with YOLOv8 pose detection,<br />
+      face recognition, and instant Telegram alerts.
+    </p>
+
+    <div class="hero-ctas reveal-up delay-3">
+      <a href="#download" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download for Windows
+      </a>
+      <a href="#howitworks" class="btn-ghost">
+        See How It Works
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-stats reveal-up delay-4">
+      <div class="stat">
+        <span class="stat-num" data-target="99">0</span><span class="stat-pct">%</span>
+        <span class="stat-label">Detection Accuracy</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-target="6">0</span>
+        <span class="stat-label">Detection Layers</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-target="0">0</span><span class="stat-pct">ms*</span>
+        <span class="stat-label">Alert Delay</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating phone mockup -->
+  <div class="hero-mockup reveal-right delay-2">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="tg-header">
+          <div class="tg-avatar">🎓</div>
+          <div class="tg-info">
+            <strong>FairExam Bot</strong>
+            <span>online</span>
+          </div>
+        </div>
+        <div class="tg-messages" id="tg-demo"></div>
+        <div class="tg-buttons">
+          <button class="tg-btn tg-approve">✅ Approve</button>
+          <button class="tg-btn tg-deny">❌ Deny</button>
+        </div>
+      </div>
+    </div>
+    <div class="phone-glow"></div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FEATURES ══════════════════════════════════ -->
+<section id="features">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Capabilities</span>
+      <h2 class="section-title">Everything You Need<br />to Run a Cheat-Free Exam</h2>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card reveal-up delay-1">
+        <div class="feature-icon icon-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>YOLOv8 Pose Detection</h3>
+        <p>Real-time skeleton tracking detects head turns, suspicious posture, and looking away — frame by frame at full speed.</p>
+        <div class="feature-tag">AI / Computer Vision</div>
+      </div>
+
+      <div class="feature-card reveal-up delay-2">
+        <div class="feature-icon icon-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Face Recognition</h3>
+        <p>Enrolls the student's face before the exam. Instantly detects face absence, multiple people, or identity substitution.</p>
+        <div class="feature-tag">Biometric Security</div>
+      </div>
+
+      <div class="feature-card reveal-up delay-3">
+        <div class="feature-icon icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.59 4.9 2 2 0 0 1 3.56 2.71h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+        </div>
+        <h3>Instant Telegram Alerts</h3>
+        <p>Suspicious activity triggers an immediate alert with photo evidence sent directly to the teacher's Telegram — wherever they are.</p>
+        <div class="feature-tag">Real-Time Notifications</div>
+      </div>
+
+      <div class="feature-card reveal-up delay-1">
+        <div class="feature-icon icon-orange">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Screen & URL Monitoring</h3>
+        <p>Monitors every open window and browser URL. Blocked apps or forbidden websites trigger an immediate escalated alert.</p>
+        <div class="feature-tag">System Monitoring</div>
+      </div>
+
+      <div class="feature-card reveal-up delay-2">
+        <div class="feature-icon icon-red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <h3>Microphone Monitoring</h3>
+        <p>Continuous audio analysis detects sustained suspicious noise above a configurable threshold, with cooldown-based alerts.</p>
+        <div class="feature-tag">Audio Intelligence</div>
+      </div>
+
+      <div class="feature-card reveal-up delay-3">
+        <div class="feature-icon icon-cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="11" x2="17" y2="11"/><line x1="20" y1="8" x2="20" y2="14"/></svg>
+        </div>
+        <h3>Multi-Teacher Broadcast</h3>
+        <p>Multiple teachers share the same Telegram bot. Each teacher can run their own separate exam session with an independent code.</p>
+        <div class="feature-tag">Team Collaboration</div>
+      </div>
+
+      <div class="feature-card reveal-up delay-1">
+        <div class="feature-icon icon-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>3-Phase Escalation</h3>
+        <p>Incidents escalate through Warning → Alert → Critical phases. Each phase sends a higher-priority Telegram message with evidence.</p>
+        <div class="feature-tag">Smart Escalation</div>
+      </div>
+
+      <div class="feature-card reveal-up delay-2">
+        <div class="feature-icon icon-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>CSV Exam Report</h3>
+        <p>Automatically generates a full incident report at exam end — every suspicious event with timestamps, sent via Telegram.</p>
+        <div class="feature-tag">Audit Trail</div>
+      </div>
+
+      <div class="feature-card reveal-up delay-3">
+        <div class="feature-icon icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        </div>
+        <h3>Demo Mode</h3>
+        <p>Password-protected demo that runs the full simulation without a real camera — perfect for training teachers before exam day.</p>
+        <div class="feature-tag">Easy Onboarding</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ HOW IT WORKS ══════════════════════════════ -->
+<section id="howitworks">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Workflow</span>
+      <h2 class="section-title">Up and Running<br />in Four Steps</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-track"></div>
+
+      <div class="timeline-item reveal-left">
+        <div class="timeline-num">01</div>
+        <div class="timeline-card">
+          <div class="timeline-icon">⚙️</div>
+          <h3>Configure the Bot</h3>
+          <p>Enter your Telegram Bot Token, set your exam code, whitelist allowed websites and apps. Configuration is encrypted and tied to your machine — no one else can read it.</p>
+          <div class="timeline-chips">
+            <span>Bot Token</span><span>Exam Code</span><span>Whitelist</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item timeline-right reveal-right">
+        <div class="timeline-num">02</div>
+        <div class="timeline-card">
+          <div class="timeline-icon">🎓</div>
+          <h3>Students Join the Waiting Room</h3>
+          <p>Each student opens FairExam, enters their name, seat number, and the exam code. They sit in an animated waiting room until the teacher approves them and starts the exam.</p>
+          <div class="timeline-chips">
+            <span>Student ID</span><span>Seat Number</span><span>Face Enrollment</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-left">
+        <div class="timeline-num">03</div>
+        <div class="timeline-card">
+          <div class="timeline-icon">📲</div>
+          <h3>Approve &amp; Start via Telegram</h3>
+          <p>The teacher receives approval requests on Telegram with inline buttons. One tap approves a student. One command approves everyone at once. Start the exam for all students simultaneously.</p>
+          <div class="timeline-chips">
+            <span>/approveall</span><span>/startexam</span><span>Inline Buttons</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item timeline-right reveal-right">
+        <div class="timeline-num">04</div>
+        <div class="timeline-card">
+          <div class="timeline-icon">🛡️</div>
+          <h3>AI Monitors. You Relax.</h3>
+          <p>Six detection layers run in real time. Any suspicious behaviour sends an instant alert with photo to your Telegram. At exam end, a full CSV report is delivered automatically.</p>
+          <div class="timeline-chips">
+            <span>Live Camera</span><span>Photo Evidence</span><span>CSV Report</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ DETECTION ════════════════════════════════ -->
+<section id="detection">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Detection Engine</span>
+      <h2 class="section-title">Six Layers of Intelligence<br />Running Simultaneously</h2>
+    </div>
+
+    <div class="detection-grid">
+      <div class="det-card reveal-up delay-1">
+        <div class="det-badge">Layer 1</div>
+        <div class="det-icon">👀</div>
+        <h4>Head Direction</h4>
+        <p>YOLOv8 skeleton keypoints track nose and ear positions. Head turned &gt;20° triggers a warning.</p>
+      </div>
+      <div class="det-card reveal-up delay-2">
+        <div class="det-badge">Layer 2</div>
+        <div class="det-icon">👁️</div>
+        <h4>Eye Deviation</h4>
+        <p>Eye landmark offset analysis detects gaze direction without an infrared sensor.</p>
+      </div>
+      <div class="det-card reveal-up delay-3">
+        <div class="det-badge">Layer 3</div>
+        <div class="det-icon">🧍</div>
+        <h4>Body Posture</h4>
+        <p>Unusual body tilts, leaning, or reaching motions are flagged instantly.</p>
+      </div>
+      <div class="det-card reveal-up delay-1">
+        <div class="det-badge">Layer 4</div>
+        <div class="det-icon">👥</div>
+        <h4>Multiple Faces</h4>
+        <p>Any second face entering the frame sends an immediate critical alert with photo evidence.</p>
+      </div>
+      <div class="det-card reveal-up delay-2">
+        <div class="det-badge">Layer 5</div>
+        <div class="det-icon">📱</div>
+        <h4>Phone / Object Detection</h4>
+        <p>YOLO object detection identifies phones, books, or notes held in view.</p>
+      </div>
+      <div class="det-card reveal-up delay-3">
+        <div class="det-badge">Layer 6</div>
+        <div class="det-icon">🖥️</div>
+        <h4>Screen &amp; Audio</h4>
+        <p>Window titles, browser URLs, and microphone noise are monitored continuously in separate threads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ TECH STACK ════════════════════════════════ -->
+<section id="tech">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Built With</span>
+      <h2 class="section-title">State-of-the-Art<br />Technologies</h2>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card reveal-up delay-1">
+        <div class="tech-logo tech-python">Py</div>
+        <strong>Python 3.11</strong>
+        <span>Core runtime</span>
+      </div>
+      <div class="tech-card reveal-up delay-2">
+        <div class="tech-logo tech-yolo">V8</div>
+        <strong>YOLOv8</strong>
+        <span>Pose detection</span>
+      </div>
+      <div class="tech-card reveal-up delay-3">
+        <div class="tech-logo tech-cv">CV</div>
+        <strong>OpenCV</strong>
+        <span>Camera capture</span>
+      </div>
+      <div class="tech-card reveal-up delay-1">
+        <div class="tech-logo tech-face">FR</div>
+        <strong>face_recognition</strong>
+        <span>Face biometrics</span>
+      </div>
+      <div class="tech-card reveal-up delay-2">
+        <div class="tech-logo tech-tg">✈️</div>
+        <strong>Telegram Bot API</strong>
+        <span>Alerts &amp; control</span>
+      </div>
+      <div class="tech-card reveal-up delay-3">
+        <div class="tech-logo tech-tk">Tk</div>
+        <strong>Tkinter</strong>
+        <span>Native Windows UI</span>
+      </div>
+      <div class="tech-card reveal-up delay-1">
+        <div class="tech-logo tech-crypto">🔐</div>
+        <strong>Fernet AES</strong>
+        <span>Config encryption</span>
+      </div>
+      <div class="tech-card reveal-up delay-2">
+        <div class="tech-logo tech-pyinstaller">EXE</div>
+        <strong>PyInstaller</strong>
+        <span>Windows EXE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ DOWNLOAD ══════════════════════════════════ -->
+<section id="download">
+  <div class="container">
+    <div class="download-card reveal-up">
+      <div class="download-glow"></div>
+      <div class="download-content">
+        <span class="download-badge">Free &amp; Open Source</span>
+        <h2>Ready to Secure Your Next Exam?</h2>
+        <p>FairExam runs entirely on Windows — no cloud subscription, no monthly fee. Your data stays on your machine.</p>
+        <div class="download-buttons">
+          <a href="#" class="btn-primary btn-large">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download FairExam.exe
+          </a>
+          <a href="https://github.com/yousof158" target="_blank" rel="noopener" class="btn-outline">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub — Yousof Ahmad
+          </a>
+        </div>
+        <p class="download-note">Requires Windows 10/11 · Python 3.11 · Webcam</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-icon">🎓</span>
+        Fair<span class="accent">Exam</span>
+        <p>AI-Powered Exam Proctoring for Windows</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <strong>Product</strong>
+          <a href="#features">Features</a>
+          <a href="#howitworks">How It Works</a>
+          <a href="#detection">Detection</a>
+          <a href="#download">Download</a>
+        </div>
+        <div class="footer-col">
+          <strong>Tech Stack</strong>
+          <a href="#">Python 3.11</a>
+          <a href="#">YOLOv8</a>
+          <a href="#">Telegram Bot</a>
+          <a href="#">face_recognition</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FairExam · Built with ❤️ by <a href="https://github.com/yousof158" target="_blank" rel="noopener" class="footer-author">Yousof Ahmad</a></p>
+      <p class="footer-sub">*Alert delay depends on network conditions</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
